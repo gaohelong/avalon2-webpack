@@ -7,5 +7,5 @@ module.exports = {
     'css': path.resolve(files.cssPath, 'index.' + base.cssType)
   },
   modules: ['node_modules'],
-  extensions: ['.js', '.jsx', '.json']
+  extensions: ['.js', '.jsx', '.json', 'scss']
 };

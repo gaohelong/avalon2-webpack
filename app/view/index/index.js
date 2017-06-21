@@ -3,7 +3,7 @@ console.log('index.js:引入成功');
 let vm = avalon.define({
   $id  : "test",
   name : "司徒正美",
-  array: [11, 22, 33]
+  array: [11, 22, 33, 44]
 });
 
 setTimeout(function () {
