@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>单页Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body ms-controller="main" class="ms-controller">
+        <div id="content">
+            <div>
+                图标字体：
+                <i class="icon icon-sliderR"></i>
+                <i class="icon icon-sliderL"></i>
+            </div>
+            <input ms-duplex="@name">
+            <p>Hello,{{@name}}!</p>
+            <ul>
+                <li ms-for="($index,el) in @array">{{$index}}--{{el}}</li>
+            </ul>
+        </div>
+
+        <!-- router -->
+        <h1>avalon2+mmRouter</h1>
+        <p>使用webpack对 avalon与mmRouter进行打包(hash模式)</p>
+        <p><a href='#!/aaa/1/3'>点我</a></p>
+        <p><a href='#!/bbb'>点我</a></p>
+        <p><a href='#!/ccc'>点我</a></p>
+        <p><a href='#!/ddd/111/222'>点我</a></p>
+        <p>{{@currPath}}</p>
+
+        <div style='height:800px'></div>
+        <p id='bbb'>bbb滚动条滚动这里, <a href='#!/ccc'>滚到ccc</a></p>
+
+        <div style='height:800px'></div>
+        <p id='ccc'>ccc滚动条滚动这里, <a href='#!/aaa'>滚到aaa</a></p>
+
+        <script type="text/javascript" src="http://portal.sinobbd.com/static/bigdata/js/global/jquery.min.js"></script>
+        <script src="./dll/vendor.js"></script>
+    </body>
+</html>

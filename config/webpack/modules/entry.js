@@ -1,23 +1,23 @@
 const base = require('../base/base');
 
 module.exports = ((entry) => {
-  let All = {};
+    let All = {};
 
-  if (base.mainJS) {
-    const path = require('path');
+    if (base.mainJS) {
+        const path = require('path');
+        const files = require('../base/files');
 
-    const files = require('../base/files');
+        All = Object.assign(entry, {
+            // mmRouter    : [path.resolve(files.appPath, 'mmRouter')],
+            'Main'      : [path.resolve(files.jsPath, 'main')],
+        });
+    }
 
-    All = Object.assign(entry, {
-      'Main': [path.resolve(files.jsPath, 'main.js')],
-    });
-  }
-
-  return base.mainJS ? All : entry;
+    return base.mainJS ? All : entry;
 })({
-  'Common': [
-    'lib',
-    'css',
-    /* 'core-js', 'babel-polyfill' */
-  ]
+    'Common': [
+        'lib',
+        'css',
+        /* 'core-js', 'babel-polyfill' */
+    ]
 });

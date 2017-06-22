@@ -20,12 +20,12 @@ var map = {
     'aaa': a,
     'bbb': b,
     'ccc': c
-};
+}
 
-avalon.router.add("/pager-{count:\\d+}", function (count) {
-    // 返回新的hash用于设置地址栏
-    return '/aaa?pager-' + count;
-})
+avalon.router.add("/pager-{count:\\d+}", function(count){
+    return '/aaa?pager-' + count
+    // avalon.router.navigate('/aaa?pager-'+count, 1)
+});
 
 avalon.router.add("/:tab", function (param) {
     vm.main = map[param];
@@ -33,10 +33,14 @@ avalon.router.add("/:tab", function (param) {
 
 avalon.history.start({
     root: "/",
-    hashPrefix: ""
+    html5: true
 });
 
-var hash = location.hash.replace(/#!?/, '');
-avalon.router.navigate(hash || '/aaa', 1); // 默认打开
+var hash = avalon.history.getPath();
+if (hash === '/exmaple6.html') { // 比如一些网站没有, https://segmentfault.com/
+    hash = '/aaa' ;
+}
 
-avalon.scan(document.body);
+// avalon.router.navigate(hash, 1); // 默认打开
+
+avalon.scan(document.body)

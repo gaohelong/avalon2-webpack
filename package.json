@@ -77,7 +77,8 @@
     "avalon2": "^2.2.4",
     "bluebird": "^3.5.0",
     "fetch-polyfill2": "0.0.3",
-    "json3": "^3.3.2"
+    "json3": "^3.3.2",
+    "mmDux": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
