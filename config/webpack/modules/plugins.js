@@ -78,4 +78,8 @@ module.exports = [
     loader: 'babel-loader',
     query: require('./babel')
   }]),
+
+  new webpack.ProvidePlugin({
+
+  }),
 ];

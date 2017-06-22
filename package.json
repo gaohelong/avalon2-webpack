@@ -74,7 +74,10 @@
   },
   "homepage": "https://github.com/sayll/avalon-webpack-start#readme",
   "dependencies": {
-    "avalon2": "^2.2.4"
+    "avalon2": "^2.2.4",
+    "bluebird": "^3.5.0",
+    "fetch-polyfill2": "0.0.3",
+    "json3": "^3.3.2"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",

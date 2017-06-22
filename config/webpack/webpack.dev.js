@@ -13,6 +13,9 @@ module.exports = merge(config, {
   performance: { // 关闭hot更新导致文件过大提示
     hints: false // 性能提示[warning,error,false]
   },
+  externals: {
+      jquery: 'jQuery'
+  },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new DashboardPlugin(new Dashboard({
