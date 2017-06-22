@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>单页Demo</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .tabs a {
+                display: inline-block;
+                margin-right: 1em;
+                height:20px;
+                line-height: 20px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body ms-controller="main" class="ms-controller">
+        <h1>avalon2+mmRouter</h1>
+        <p>使用webpack对 avalon与mmRouter进行打包(ms-html切换卡)</p>
+        <p class="tabs">
+            <a id="aaa" href='#!/aaa'>aaa</a><br/>
+            <a href='#!/bbb'>bbb</a><br/>
+            <a href='#!/ccc'>ccc</a><br/>
+            <a href='#!/pager-1'>aaa1</a><br/>
+            <a href='#!/pager-2'>aaa2</a><br/>
+        </p>
+        <div ms-html="@main"></div>
+
+        <script type="text/javascript" src="http://portal.sinobbd.com/static/bigdata/js/global/jquery.min.js"></script>
+        <script src="./dll/vendor.js"></script>
+    </body>
+</html>
