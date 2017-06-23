@@ -6,32 +6,31 @@ const base              = require('./base/base.js'),
       ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = (option = { dev: process.env.NODE_ENV === 'development' }) => ((Glob, objConcat, createHtml) => {
+    /**
+     * Config
+     * */
+    let Config = {
+        entry: objConcat(Glob.fileCss, objConcat(Glob.fileJs, require('./modules/entry'))),
+        resolve: require('./modules/resolve'),
+        output: {
+            path: path.join(files.root, files.buildName),
+            publicPath: base.cdnPath, //资源文件引用路径
+            filename: Glob.jsBundle,
+            crossOriginLoading: false, // 是否允许跨域加载[anonymous,use-credentials,false]
+            chunkFilename: 'async/[name].js',
+            sourceMapFilename: '[file].map'
+        },
+        module: require('./modules/loader')(option.dev),
+        plugins: require('./modules/plugins')
+    };
 
-  /**
-   * Config
-   * */
-  let Config = {
-    entry: objConcat(Glob.fileCss, objConcat(Glob.fileJs, require('./modules/entry'))),
-    resolve: require('./modules/resolve'),
-    output: {
-      path: path.join(files.root, files.buildName),
-      publicPath: base.cdnPath, //资源文件引用路径
-      filename: Glob.jsBundle,
-      crossOriginLoading: false, // 是否允许跨域加载[anonymous,use-credentials,false]
-      chunkFilename: 'async/[name].js',
-      sourceMapFilename: '[file].map'
-    },
-    module: require('./modules/loader')(option.dev),
-    plugins: require('./modules/plugins')
-  };
+    Config.plugins.push(new ExtractTextPlugin(Glob.cssBundle));
 
-  Config.plugins.push(new ExtractTextPlugin(Glob.cssBundle));
-
-  /**
-   * 创建所有的视图模块
-   * */
-  createHtml(Config, Glob.fileHtml, files.htmlPath, base.viewType, option.dev);
-  return Config;
+    /**
+     * 创建所有的视图模块
+     * */
+    createHtml(Config, Glob.fileHtml, files.htmlPath, base.viewType, option.dev);
+    return Config;
 })(
   /**
    * 处理所需文件的文件目录，输出对应文件的对象

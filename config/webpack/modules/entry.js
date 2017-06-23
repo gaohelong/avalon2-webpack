@@ -8,8 +8,7 @@ module.exports = ((entry) => {
         const files = require('../base/files');
 
         All = Object.assign(entry, {
-            // mmRouter    : [path.resolve(files.appPath, 'mmRouter')],
-            'Main'      : [path.resolve(files.jsPath, 'main')],
+            'Main': [path.resolve(files.jsPath, 'main')],
         });
     }
 

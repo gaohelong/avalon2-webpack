@@ -1,9 +1,11 @@
+console.log('login.js:引入成功');
+
 /**
  * @desc view model 
  */
 let vm = avalon.define({
     $id         : 'main',
-    content     : '',           // 默认为登录页. 注：属性(可在html中直接调用)
+    content     : '',                       // 属性(可在html中直接调用).
     array       : [1, 2],
 });
 
@@ -33,26 +35,21 @@ $.ajax({
  * @desc router
  */
 
+// require html
+var login = require('../../html/index');
+
 // router map
-var routerMap = {};
+var routerMap = {
 
-// 域名
-avalon.router.add("/domain", (param) => {
-    let curHtml = require('../../html/domain/domain'); // 路由匹配时在加载.
-    vm.content = curHtml;
+};
+
+// router
+avalon.router.add("/*", (path) => { // 登录页及所有不符合规则的url跳转页面
+    vm.content = '123';
 });
 
-// 用户设置
-avalon.router.add("/setting/:ddd/:eee", (param) => { //:ddd为参数
-    // let curHtml = require('../../html/setting/setting');
-    vm.content = 'curHtml';
-});
-
-//登录 
-avalon.router.add("\/*\ig", (param) => {
-    console.log(1);
-    let curHtml = require('../../html/login/login');
-    vm.content = curHtml;
+avalon.router.add("/ddd/:ddd/:eee", (a) => {//:ddd为参数
+    vm.currPath = this.path;
 });
 
 /**
@@ -69,5 +66,3 @@ avalon.history.start({
  * @desc 启动扫描机制,让avalon接管页面
  */
 avalon.scan(document.body);
-
-console.log('login.js:引入成功');
