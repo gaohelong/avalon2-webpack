@@ -95,6 +95,7 @@ module.exports = (option = { dev: process.env.NODE_ENV === 'development' }) => (
         }, VIEWS),
         jsBundle  = debug ? `${files.jsName}/[name].js` : `${files.jsName}/[name].[chunkhash:8].js`,
         cssBundle = debug ? `${files.cssName}/[name].css` : `${files.cssName}/[name].[contenthash:8].css`;
+
     return {
       'fileHtml': fileHtml,
       'fileJs': fileJs,

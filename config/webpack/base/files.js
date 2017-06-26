@@ -7,7 +7,7 @@ module.exports = ((filesName) => {
     files.buildPath = path.resolve(files.root, files.buildName);
     files.dllPath = path.resolve(files.root, `${files.buildName}/dll`);
     files.jsPath = path.resolve(appPath, files.jsName);
-    files.cssPath = path.resolve(appPath, files.cssName);
+    files.sassPath = path.resolve(appPath, files.sassName);
     files.imgPath = path.resolve(appPath, files.imgName);
     files.fontPath = path.resolve(appPath, files.fontName);
     files.viewPath = path.resolve(appPath, files.viewName);
@@ -22,7 +22,8 @@ module.exports = ((filesName) => {
     buildName: 'build', // 打包文件
     componentName: 'component', // 公共组件文件
     htmlName: 'html', // 视图文件
-    cssName: 'source/css', // 公共样式文件
+    sassName: 'sass', // 公共样式文件
+    cssName: 'css', // 设置css存放路径名(build/css)
     fontName: 'source/font', // 公共字体文件
     imgName: 'source/img', // 公共图片文件
     jsName: 'source/js', // 公共脚本文件

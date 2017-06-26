@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+// compass混合器.
+@import "compass/css3";             // css3.
+@import "compass/css3/animation";   // css3动画这里需要单独引入否则报错.
+
+// 自定义混合器.
+@import "box-sizing";
+@import "box-shadow";

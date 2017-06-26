@@ -74,19 +74,35 @@ module.exports = (dev) => {
         }
     };
 
-    function cssLoader(test, loader, path = [files.viewPath, files.cssPath]) {
-        Config.rules.push({ // 独立CSS文件
-            test: test, // 标准的CSS编译
-            include: path,
-            loaders: require('extract-text-webpack-plugin').extract({
-                fallback: 'style-loader',
-                use: loader ? [cssRules, loader, 'postcss-loader'] : [cssRules, 'postcss-loader']
-            })
-        })
+    function cssLoader(test, loader, type = 'string', path = [files.viewPath, files.sassPath]) {
+        // console.log(loader);
+        if (type == 'obj' && loader.loader.indexOf('sass') != -1) { // sass
+            Config.rules.push({ // 独立CSS文件
+                test: test, // 标准的CSS编译
+                include: path,
+                loaders: require('extract-text-webpack-plugin').extract({
+                    fallback: 'style-loader',
+                    use: [cssRules, loader]
+                })
+            });
+        } else {
+             Config.rules.push({ // 独立CSS文件
+                test: test, // 标准的CSS编译
+                include: path,
+                loaders: require('extract-text-webpack-plugin').extract({
+                    fallback: 'style-loader',
+                    use: loader ? [cssRules, loader, 'postcss-loader'] : [cssRules, 'postcss-loader']
+                })
+            });
+       
+        }
     }
 
     cssLoader(/\.(css|pcss)$/, false);
-    cssLoader(/\.(sass|scss)$/, 'sass-loader');
+    // cssLoader(/\.(sass|scss)$/, 'sass-loader');
+    cssLoader(/\.(sass|scss)$/, {
+        loader: "sass-loader?sourceMap&outputStyle=expanded&includePaths[]=" + require('path').resolve(__dirname, "../../../node_modules/compass-mixins/lib")
+    }, 'obj');
     cssLoader(/\.(less)$/, 'less-loader');
 
     return Config;

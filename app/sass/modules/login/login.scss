@@ -1,0 +1,34 @@
+@charset "utf-8";
+@import  "../core";
+
+// path.
+$img-nav-url:   #{$img-url}#{'nav/'}      !default;
+$img-login-url: #{$img-url}#{'login/'}    !default;
+
+.#{$prefix}-container {
+    .login {
+        @include            display-flex(flex);
+        @include            flex-direction(row);
+        @include            flex-wrap(wrap);
+
+        #pwd {
+            @include            display-flex(flex);
+            width:              140px;
+            height:             140px;
+            margin:             30px;
+            padding:            10px;
+            @include            border-radius(10px);
+            background-color:   $white;
+        }
+
+        #usr {
+            @include    animation(close_animation .6s ease-out forwards);
+        }
+    }
+}
+
+// animation.
+@include keyframes(close_animation) {
+    100%    { opacity: 1; }
+    0%      { opacity: 0; }
+}

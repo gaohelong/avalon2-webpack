@@ -16,7 +16,7 @@ module.exports = ((entry) => {
 })({
     'Common': [
         'lib',
-        'css',
+        'sass',
         /* 'core-js', 'babel-polyfill' */
     ]
 });

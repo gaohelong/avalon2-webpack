@@ -1,0 +1,129 @@
+@charset "utf-8";
+@import "../core";
+
+// path.
+$img-nav-url:   #{$img-url}#{'nav/'}      !default;
+$img-login-url: #{$img-url}#{'login/'}    !default;
+
+// style.
+.nine-palaces {
+    @include            display-flex(flex);
+    width:              140px;
+    height:             140px;
+    margin:             30px;
+    padding:            10px;
+    @include            border-radius(10px);
+    background-color:   $white;
+}
+
+// 实例容器1.
+.#{$prefix}-container {
+    @include            display-flex(flex);
+    @include            flex-direction(row);
+    @include            flex-wrap(wrap);
+
+    // 实例1. 
+    .nine-palaces {
+        @include            display-flex(flex);
+        width:              140px;
+        height:             140px;
+        margin:             30px;
+        padding:            10px;
+        @include            border-radius(10px);
+        background-color:   $white;
+    }
+
+    .row-type-1 {
+        width:              40px;
+        height:             40px;
+        background-color:   $black;
+        @include            border-radius(50%);
+    }
+
+    // 实例2.
+    .nine-palaces-1 {
+        @extend             .nine-palaces;
+        @include            justify-content(center);
+    }
+
+    // 实例3.
+    .nine-palaces-2 {
+        @extend             .nine-palaces;
+        @include            justify-content(flex-end);
+    }
+
+    // 实例4.
+    .nine-palaces-3 {
+        @extend             .nine-palaces;
+        @include            justify-content(flex-start);
+        @include            align-items(center);
+    }
+
+    // 实例5.
+    .nine-palaces-4 {
+        @extend             .nine-palaces;
+        @include            justify-content(center);
+        @include            align-items(center);
+    }
+
+    // 实例6.
+    .nine-palaces-5 {
+        @extend             .nine-palaces;
+        @include            justify-content(flex-end);
+        @include            align-items(center);
+    }
+
+    // 实例7.
+    .nine-palaces-6 {
+        @extend             .nine-palaces;
+        @include            justify-content(flex-start);
+        @include            align-items(flex-end);
+    }
+
+    // 实例8.
+    .nine-palaces-7 {
+        @extend             .nine-palaces;
+        @include            justify-content(center);
+        @include            align-items(flex-end);
+    }
+
+    // 实例9.
+    .nine-palaces-8 {
+        @extend             .nine-palaces;
+        @include            justify-content(flex-end);
+        @include            align-items(flex-end);
+    }
+}
+
+// 实例容器2.
+.#{$prefix}-container-2 {
+    @include            display-flex(flex);
+    @include            flex-direction(row);
+    @include            flex-wrap(wrap);
+
+    // 实例1.
+    .nine-palaces-two-1 {
+        @extend             .nine-palaces;
+        @include            justify-content(space-between);
+    }
+
+    .two-row {
+        width:              40px;
+        height:             40px;
+        background-color:   $black;
+        @include            border-radius(50%);
+    }
+
+    // 实例2.
+    .nine-palaces-two-2 {
+        @extend             .nine-palaces;
+        @include            flex-direction(column);
+        @include            justify-content(space-between);
+    }
+}
+
+// animation.
+@include keyframes(close_animation) {
+    100%    { opacity: 1; }
+    0%      { opacity: 0; }
+}

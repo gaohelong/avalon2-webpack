@@ -15,19 +15,22 @@ setTimeout(() => {
 /**
  * @desc 判断是否登录
  */
-let url = 'http://hl.avalon2.com/';
-$.ajax({
-    method: 'POST',
-    url: url + '/php/test.php',
-    data: {
-        user: 'helong',
-        pwd:  '123456'
-    },
-    dataType: 'jsonp',
-    success: response => {
-        console.log(response);
-    }
-});
+var loginState = () => {
+    let url = 'http://hl.avalon2.com/';
+    $.ajax({
+        method: 'POST',
+        url: url + '/php/test.php',
+        data: {
+            user: 'helong',
+            pwd:  '123456'
+        },
+        dataType: 'jsonp',
+        success: response => {
+            if (response.code != 0) { // 未登录则跳转到登录页.
+            }
+        }
+    });
+};
 
 /**
  * @desc router
@@ -38,6 +41,9 @@ var routerMap = {};
 
 // 域名
 avalon.router.add("/domain", (param) => {
+    loginState();
+    console.log('domain');
+    require('../../sass/modules/domain/domain'); // sass
     let curHtml = require('../../html/domain/domain'); // 路由匹配时在加载.
     vm.content = curHtml;
 });
@@ -50,8 +56,9 @@ avalon.router.add("/setting/:ddd/:eee", (param) => { //:ddd为参数
 
 //登录 
 avalon.router.add("\/*\ig", (param) => {
-    console.log(1);
-    let curHtml = require('../../html/login/login');
+    console.log('login');
+    require('../../sass/modules/login/login'); // sass
+    let curHtml = require('../../html/login/login'); // html
     vm.content = curHtml;
 });
 
@@ -60,9 +67,9 @@ avalon.router.add("\/*\ig", (param) => {
  */
 avalon.history.start({
     root:           "/",    // 根路径.
-    hashPrefix:     "",     // 滚动.
+    hashPrefix:     "",     // .
     // html5:          true,   // 是否使用HTML5 history.
-    // autoScroll:     true,   // 
+    // autoScroll:     true,   // 滚动.
 });
 
 /**
