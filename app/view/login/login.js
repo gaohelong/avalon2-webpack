@@ -1,2 +1,6 @@
-document.title = '登录';
-console.log('登录');
+document.title = '登录-js';
+let vm = avalon.define({
+    $id:            'login',
+    loginCls:       'login',
+    content:        '123'
+});

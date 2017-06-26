@@ -1,2 +1,6 @@
-document.title = '域名';
-console.log('域名');
+document.title = '域名-js';
+let vm = avalon.define({
+    $id:            'domain',
+    domainCls:      'domain',
+    content:        '456'
+});

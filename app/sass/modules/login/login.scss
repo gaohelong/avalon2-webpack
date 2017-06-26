@@ -7,6 +7,8 @@ $img-login-url: #{$img-url}#{'login/'}    !default;
 
 .#{$prefix}-container {
     .login {
+        font-size:          20px;
+        color:              red;
         @include            display-flex(flex);
         @include            flex-direction(row);
         @include            flex-wrap(wrap);

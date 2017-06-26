@@ -15,7 +15,7 @@ setTimeout(() => {
 /**
  * @desc 判断是否登录
  */
-var loginState = () => {
+var loginState = (callback) => {
     let url = 'http://hl.avalon2.com/';
     $.ajax({
         method: 'POST',
@@ -25,8 +25,11 @@ var loginState = () => {
             pwd:  '123456'
         },
         dataType: 'jsonp',
-        success: response => {
+        success: (response) => {
             if (response.code != 0) { // 未登录则跳转到登录页.
+                window.location = '../#!';
+            } else {
+                callback();
             }
         }
     });
@@ -41,26 +44,45 @@ var routerMap = {};
 
 // 域名
 avalon.router.add("/domain", (param) => {
-    loginState();
-    console.log('domain');
-    require('../../sass/modules/domain/domain'); // sass
-    let curHtml = require('../../html/domain/domain'); // 路由匹配时在加载.
-    vm.content = curHtml;
+    // 登录验证.
+    loginState(() => {
+        console.log('domain');                              // log.
+        require('../../sass/modules/domain/domain');        // sass.
+        require("../../view/domain/domain");                // js.
+        let curHtml = require('../../html/domain/domain');  // 路由匹配时在加载.
+        vm.content = htmlReplace(curHtml);
+    });
 });
 
 // 用户设置
-avalon.router.add("/setting/:ddd/:eee", (param) => { //:ddd为参数
+avalon.router.add("/setting/:ddd/:eee", (param) => {    //:ddd为参数
     // let curHtml = require('../../html/setting/setting');
     vm.content = 'curHtml';
 });
 
 //登录 
 avalon.router.add("\/*\ig", (param) => {
-    console.log('login');
-    require('../../sass/modules/login/login'); // sass
-    let curHtml = require('../../html/login/login'); // html
-    vm.content = curHtml;
+    console.log('login');                               // log.
+    require("../../sass/modules/login/login");          // sass.
+    require("../../view/login/login");                  // js.
+    let curHtml = require("../../html/login/login");    // html.
+    vm.content = htmlReplace(curHtml);
+
+    // 懒加载.
+    // require.ensure(["../../view/login/login", "../../html/login/login"], (js, html) => {
+    //     let _js = require("../../view/login/login"),    // js
+    //         _html = require("../../html/login/login");  // html
+    //
+    //     vm.content = htmlReplace(_html);
+    // }, 'login');
 });
+
+// 处理avalon-bug.
+let htmlReplace = (html) => {
+    html = html.replace(/\[{/ig, '"');
+    html = html.replace(/}\]/ig, '"');
+    return html;
+};
 
 /**
  * @desc 启动路由监听

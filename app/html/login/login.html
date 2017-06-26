@@ -1,10 +1,8 @@
 <!-- template -->
-<div>
-    <a ms-attr="{href: '../#!', target: '_self'}">登录</a>
-    <a ms-attr="{href: '../#!/domain', target: '_self'}">域名</a>
-    <div>login</div>
+<div ms-controller=[{login}]>
+    <div ms-class=[{@loginCls}]>
+        <a ms-attr="{href: '../#!', target: '_self'}">登录</a>
+        <a ms-attr="{href: '../#!/domain', target: '_self'}">域名</a>
+        <div>login{{@content}}</div>
+    </div>
 </div>
-
-<!-- script -->
-<script>
-</script>

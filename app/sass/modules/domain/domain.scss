@@ -8,13 +8,13 @@ $img-login-url: #{$img-url}#{'login/'}    !default;
 // style.
 .#{$prefix}-container {
     .domain {
+        font-size:          26px;
+        color:              blue;
         @include            display-flex(flex);
-        width:              140px;
-        height:             140px;
         margin:             30px;
         padding:            10px;
         @include            border-radius(10px);
-        background-color:   $white;
+        // background-color:   $white;
 
 
         #pwd {
