@@ -1,3 +1,5 @@
+import {loginConfig} from '../globalConfig/'; // 默认加载globalConfig文件夹下的index.js文件.
+
 /**
  * @desc view model 
  */
@@ -16,10 +18,9 @@ setTimeout(() => {
  * @desc 登录验证.
  */
 var loginState = (callback) => {
-    let url = 'http://hl.avalon2.com/';
     $.ajax({
         method: 'POST',
-        url: url + '/php/test.php',
+        url: loginConfig.url,
         data: {
             user: 'helong',
             pwd:  '123456'

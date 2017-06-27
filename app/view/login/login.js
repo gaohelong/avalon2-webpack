@@ -1,11 +1,7 @@
+import {loginConfig} from '../globalConfig/'; // 默认加载globalConfig文件夹下的index.js文件.
+
 let vm = avalon.define({
     $id: 'login',
-
-    // 登录配置.
-    loginConfig: {
-        def: 'domain',
-        url: 'http://hl.avalon2.com/'
-    },
     user: '',
     pwd: '',
     loginMsg: '',
@@ -28,7 +24,7 @@ let vm = avalon.define({
     login: (e) => {
         $.ajax({
             method: 'POST',
-            url: vm.loginConfig.url + '/php/test.php',
+            url: loginConfig.url,
             data: {
                 user: vm.user,
                 pwd: vm.pwd
@@ -43,7 +39,7 @@ let vm = avalon.define({
                     vm.pwd = '';
                     vm.loginMsg = '';
                     vm.loginMsgEle = false;
-                    window.location = '../#!/' + vm.loginConfig.def;
+                    window.location = loginConfig.defUrl;
                 }
             }
         });
