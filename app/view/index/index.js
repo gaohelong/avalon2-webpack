@@ -13,7 +13,7 @@ setTimeout(() => {
 }, 3000);
 
 /**
- * @desc 判断是否登录
+ * @desc 登录验证.
  */
 var loginState = (callback) => {
     let url = 'http://hl.avalon2.com/';
@@ -77,7 +77,9 @@ avalon.router.add("\/*\ig", (param) => {
     // }, 'login');
 });
 
-// 处理avalon-bug.
+/**
+ * @desc 处理avalon-bug.
+ */
 let htmlReplace = (html) => {
     html = html.replace(/\[{/ig, '"');
     html = html.replace(/}\]/ig, '"');

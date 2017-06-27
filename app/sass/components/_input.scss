@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+/* input */
+.#{$prefix}-input {
+    width:                  180px;
+    line-height:            18px;
+    padding:                6px 10px;
+    text-align:             center;
+    font-size:              14px;
+    letter-spacing:         1.6px;
+    @include                box-sizing(content);
+}

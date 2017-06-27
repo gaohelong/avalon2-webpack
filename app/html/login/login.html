@@ -1,8 +1,19 @@
 <!-- template -->
 <div ms-controller=[{login}]>
-    <div ms-class=[{@loginCls}]>
-        <a ms-attr="{href: '../#!', target: '_self'}">登录</a>
-        <a ms-attr="{href: '../#!/domain', target: '_self'}">域名</a>
-        <div>login{{@content}}</div>
+    <div ms-class=[{@cls.loginWrap}]>
+        <div ms-class=[{@cls.row}] class=[{user}] ms-css=[{@style.mgnB10}]>
+            <span>用户名</span>
+            <input type=[{text}] name=[{user}] class=[{hl-input}] ms-attr="{placeholder: 'Username'}" ms-duplex=[{@user}] ms-on-keyup=[{@login($event) | enter}] />
+        </div>
+        <div ms-class=[{@cls.row}] class=[{pwd}] ms-css=[{@style.mgnB10}]>
+            <span>密 码</span>
+            <input type=[{password}] name=[{pwd}] class=[{hl-input}] ms-attr="{placeholder: 'Password'}" ms-duplex=[{pwd}] ms-on-keyup=[{@login($event) | enter}] />
+        </div>
+        <div ms-class=[{@cls.row}]>
+            <button type=[{button}] class=[{hl-btn hl-cursor-pointer}] ms-on-click=[{@login($event)}]>登 录</button>
+        </div>
+        <div ms-class=[{@cls.row}] id=[{login-msg}] ms-visible=[{@loginMsgEle}]>
+            {{@loginMsg}}
+        </div>
     </div>
 </div>

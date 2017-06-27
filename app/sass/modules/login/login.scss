@@ -7,24 +7,38 @@ $img-login-url: #{$img-url}#{'login/'}    !default;
 
 .#{$prefix}-container {
     .login {
-        font-size:          20px;
-        color:              red;
-        @include            display-flex(flex);
-        @include            flex-direction(row);
-        @include            flex-wrap(wrap);
+        position:           absolute;
+        left:               50%;
+        top:                200px;
+        width:              260px;
+        font-size:          16px;
+        @include            translateX(-50%);
 
-        #pwd {
-            @include            display-flex(flex);
-            width:              140px;
-            height:             140px;
-            margin:             30px;
-            padding:            10px;
-            @include            border-radius(10px);
-            background-color:   $white;
+        .user {
+            span {
+                float:              left;
+                width:              60px;
+                line-height:        30px;
+            }
         }
 
-        #usr {
+        .pwd {
+            span {
+                float:              left;
+                width:              60px;
+                line-height:        30px;
+            }
+        }
+
+        #test {
             @include    animation(close_animation .6s ease-out forwards);
+        }
+
+        #login-msg {
+            margin-top:             10px;
+            color:                  #ff0000;
+            text-align:             center;
+            font-size:              14px;
         }
     }
 }
