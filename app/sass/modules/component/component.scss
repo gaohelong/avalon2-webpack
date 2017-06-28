@@ -7,6 +7,11 @@ $img-login-url: #{$img-url}#{'login/'}    !default;
 
 // style.
 .#{$prefix}-container {
+    .#{$prefix}-header {
+        padding:                    20px 10px;
+        background-color:           #a0121f;
+    }
+
     .compoent {
         font-size:          26px;
         color:              blue;

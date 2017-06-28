@@ -1,12 +1,26 @@
 <!-- template -->
 <div ms-controller=[{component}]>
+    <template ms-widget="{is: 'ms-header'}"></template>
     <div ms-class=[{@cls.component}]>
+        <!-- component ms-tabs -->
+        <xmp ms-widget="{is:'ms-tabs'}">
+            <div slot="tab">面板1</div>
+            <div slot="tab">面板2</div>
+            <div slot="tab">面板3</div>
+        </xmp>
+
         <!-- component-soleSlot -->
-        <template ms-widget="{is:'ms-button'}" ms-click=[{@msBtnClick}]>{{@msBtnTitle}}</template>
+        <template ms-widget="{is:'ms-button'}" ms-click=[{@msBtnClick}]></template>
         <p><button ms-click=[{@updateMsBtnTtileClick}] class=[{hl-btn hl-mgn-b-10}]>click</button></p>
 
-        <!-- component-soleSlot ms-button-1 -->
-        <ms-button-1 ms-click=[{@msBtn1Click}]></ms-button-1>
+        <!-- component-soleSlot <ms-button-1></ms-button-1> ie9 no support -->
+        <!-- ms-button-1 ms-click=[{@msBtn1Click}]></ms-button-1 -->
+
+        <!-- <template></template>组件中间别放任何值否则ie9 no support -->
+        <!--template ms-widget="{is: 'ms-button-1'}" ms-click=[{@msBtn1Click}]>{{@title}}</template-->
+
+        <!-- component ms-button-1 -->
+        <template ms-widget="{is: 'ms-button-1'}" ms-click=[{@msBtn1Click}]></template>
         <p><button ms-click=[{@updateMsBtn1TtileClick}] class=[{hl-btn hl-mgn-b-10}]>click-1</button></p>
 
         <!-- component ms-header -->
