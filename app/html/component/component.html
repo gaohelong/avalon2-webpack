@@ -1,0 +1,14 @@
+<!-- template -->
+<div ms-controller=[{component}]>
+    <div ms-class=[{@cls.component}]>
+        <!-- component-soleSlot -->
+        <template ms-widget="{is:'ms-button'}" ms-click=[{@msBtnClick}]>{{@msBtnTitle}}</template>
+        <p><button ms-click=[{@updateMsBtnTtileClick}] class=[{hl-btn hl-mgn-b-10}]>click</button></p>
+
+        <!-- component-soleSlot ms-button-1 -->
+        <ms-button-1 ms-click=[{@msBtn1Click}]></ms-button-1>
+        <p><button ms-click=[{@updateMsBtn1TtileClick}] class=[{hl-btn hl-mgn-b-10}]>click-1</button></p>
+
+        <!-- component ms-header -->
+    </div>
+</div>

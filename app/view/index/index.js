@@ -55,6 +55,18 @@ avalon.router.add("/domain", (param) => {
     });
 });
 
+// 组件
+avalon.router.add("/component", (param) => {
+    // 登录验证.
+    loginState(() => {
+        console.log('component');                                   // log.
+        require('../../sass/modules/component/component');          // sass.
+        require("../../view/component/component");                  // js.
+        let curHtml = require('../../html/component/component');    // html.
+        vm.content = htmlReplace(curHtml);
+    });
+});
+
 // 用户设置
 avalon.router.add("/setting/:ddd/:eee", (param) => {    //:ddd为参数
     // let curHtml = require('../../html/setting/setting');

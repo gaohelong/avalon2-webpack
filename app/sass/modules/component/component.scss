@@ -1,0 +1,18 @@
+@charset "utf-8";
+@import "../core";
+
+// path.
+$img-nav-url:   #{$img-url}#{'nav/'}      !default;
+$img-login-url: #{$img-url}#{'login/'}    !default;
+
+// style.
+.#{$prefix}-container {
+    .compoent {
+        font-size:          26px;
+        color:              blue;
+        @include            display-flex(flex);
+        margin:             30px;
+        padding:            10px;
+        @include            border-radius(10px);
+    }
+}

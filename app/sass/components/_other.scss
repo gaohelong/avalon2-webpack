@@ -1,0 +1,13 @@
+@charset "utf-8";
+
+/* height */
+.#{$prefix}-h-30 { height: 30px; }
+
+/* row */
+.#{$prefix}-row {
+    display:    block;
+    width:      100%;
+}
+
+/* margin */
+.#{$prefix}-mgn-b-10 { margin-bottom: 10px; }

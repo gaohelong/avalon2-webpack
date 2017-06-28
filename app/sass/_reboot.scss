@@ -53,12 +53,3 @@ input, textarea, select, button {
     outline:        none;
     border:            0;
 }
-
-/* height */
-.#{$prefix}-h-30 { height: 30px; }
-
-/* row */
-.#{$prefix}-row {
-    display:    block;
-    width:      100%;
-}

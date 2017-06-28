@@ -1,10 +1,9 @@
 <?php
-    $callback = $_GET['callback'];
-    $user = $_GET['user'];
-    $pwd = $_GET['pwd'];
+    $callback = $_REQUEST['callback'];
+    $user = $_REQUEST['user'];
+    $pwd = $_REQUEST['pwd'];
     $code = -1;
     $msg = '用户名或密码错误';
-
 
     if (($user == 'helong' && $pwd == '123456')) {
         $code = 0;
