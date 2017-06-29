@@ -1,4 +1,5 @@
 import {loginConfig} from '../globalConfig/'; // 默认加载globalConfig文件夹下的index.js文件.
+require('../../component/'); // 加载组件.
 
 /**
  * @desc view model 

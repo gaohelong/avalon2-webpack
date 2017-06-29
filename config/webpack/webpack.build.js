@@ -19,6 +19,11 @@ if (process.env.NODE_TEST === 'production') {
 module.exports = merge(config, {
     plugins: [
         new WebpackMd5Hash(),
-        new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                //supresses warnings, usually from module minification
+                warnings: false
+            }
+        })
     ]
 });

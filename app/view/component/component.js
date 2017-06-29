@@ -64,7 +64,7 @@ avalon.component('ms-header', {
         },
         title: 'Avalon2',
         titleAvalon: 'Avalon2',
-        titleMIS: 'MIS',
+        titleMIS: 'Avalon2-MIS',
         titleEnter: (name, e) => {
             msHeaderVM.title = name;
         },

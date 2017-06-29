@@ -7,7 +7,7 @@ module.exports = (dev) => {
             {
                 test: /\.(js|jsx)$/,
                 exclude: [],
-                include: [files.viewPath, files.staticPath, files.jsPath, files.htmlPath],
+                include: [files.viewPath, files.staticPath, files.jsPath, files.htmlPath, files.componentPath],
                 use: ['happypack/loader?id=JSX']
             },
             { // 处理HTML关于src链接问题

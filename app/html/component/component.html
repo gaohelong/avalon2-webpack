@@ -1,6 +1,12 @@
 <!-- template -->
 <div ms-controller=[{component}]>
+    <!-- component ms-header -->
     <template ms-widget="{is: 'ms-header'}"></template>
+
+    <!-- component ms-nav -->
+    <template ms-widget="{is: 'ms-nav'}"></template>
+
+    <!-- 将插件放在ms-class元素里, 会保留template、xmp……那四种插件的标签 -->
     <div ms-class=[{@cls.component}]>
         <!-- component ms-tabs -->
         <xmp ms-widget="{is:'ms-tabs'}">
@@ -22,7 +28,5 @@
         <!-- component ms-button-1 -->
         <template ms-widget="{is: 'ms-button-1'}" ms-click=[{@msBtn1Click}]></template>
         <p><button ms-click=[{@updateMsBtn1TtileClick}] class=[{hl-btn hl-mgn-b-10}]>click-1</button></p>
-
-        <!-- component ms-header -->
     </div>
 </div>
