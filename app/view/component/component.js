@@ -32,6 +32,24 @@ avalon.component('ms-button-1', {
 });
 
 /**
+ * @desc component-soleSlot ms-button-2
+ */
+avalon.component('ms-button-2', {
+    template: '<button type="button" ms-on-click="@test" class="hl-btn hl-mgn-b-10">\
+                   <span>{{@title}}</span>\
+               </button>',
+    defaults: {
+        onInit: (e) => {
+            console.log('button-2', e);
+        },
+        test: (e) => {
+            console.log('button2-我没被替换');
+        },
+        title: 'button-2'
+    }
+});
+
+/**
  * @desc 多个slot
  */
 avalon.component('ms-tabs', {
@@ -112,7 +130,11 @@ let vm = avalon.define({
         msButton1VM.title = '更新内容-1: '+ (new Date - 0); // 组件通信.
     },
 
-    // tabs.
-
-    // ms-header.
+    // button2(如果组件中有test方法、title属性则会被替换，如果没有则不会进行对象合并)
+    button2: {
+        test: (e) => {
+            console.log('button2-被我替换了');
+        },
+        title: '按钮2'
+    }
 });
