@@ -37,10 +37,23 @@ avalon.component('ms-button-1', {
 avalon.component('ms-tabs', {
     template: '<div>\
                    <p>它有{{@num}}个面板</p>\
-                   <slot name="tab"/>\
+                   <slot name="tab" />\
                </div>',
     defaults: {
         num: 3
+    }
+});
+
+/**
+ * @desc 多个slot2
+ */
+avalon.component('ms-tabs-2', {
+    template: '<div>\
+                   <p>它有{{@num}}个面板</p>\
+                   <slot name="panels" />\
+               </div>',
+    defaults: {
+        num: 1
     }
 });
 
