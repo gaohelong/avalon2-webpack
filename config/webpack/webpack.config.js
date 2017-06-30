@@ -50,7 +50,7 @@ module.exports = (option = { dev: process.env.NODE_ENV === 'development' }) => (
           entry, // 文件完整路径
           dirName, // 传入的文件夹路径
           baseName, // 文件名
-          pathName, // 文件夹路劲
+          pathName, // 文件夹路径
           relativeName, // 键名所需,相对传入文件地址路径
           extName; // 文件格式
 
@@ -140,41 +140,51 @@ module.exports = (option = { dev: process.env.NODE_ENV === 'development' }) => (
 
     // 遍历创建所有HTML
     htmlFiles.forEach(function (pathname) {
-      let conf = {
-        filename: pathname + '.html', //生成的html存放路径，相对于path
-        template: path.resolve(htmlPath, pathname + '.' + viewType), //html模板路径
-        minify: {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeRedundantAttributes: true,
-          useShortDoctype: true,
-          removeEmptyAttributes: true,
-          removeStyleLinkTypeAttributes: true,
-          keepClosingSlash: true,
-          minifyJS: true,
-          minifyCSS: true,
-          minifyURLs: true
-        }
-      };
-      if (pathname in config.entry) { // 同HTML文件名的JS分离出来
-        conf.inject = 'body';
-        conf.chunks = ['Common', 'Main', pathname];
+      /**
+       * @desc 单页应用时只生成index.html即可, 其他所有.html文件的内容被webpack打包到js中.
+       *
+       *     例如查看index.f45fa10a.js中的代码你会发现如下代码：
+       *         function(t, n) {
+       *             t.exports = " <div ms-controller=[{component}]> <template ms-widget=\"{is: 'ms-header'}\"></template> <template ms-widget=\"{is: 'ms-nav'}\"></template> <ms-tabs-2> <div slot=[{panels}]>第一个面板的内部</div> </ms-tabs-2> <ms-button-2 ms-widget=[{@button2}]></ms-button-2> <div class=[{component}]> <ms-tabs> <div slot=[{tab}]>面板1</div> <div slot=[{tab}]>面板2</div> <div slot=[{tab}]>面板3</div> </ms-tabs> <template ms-widget=\"{is:'ms-button'}\" ms-click=[{@msBtnClick}]></template> <p><button ms-click=[{@updateMsBtnTtileClick}] class=[{hl-btn hl-mgn-b-10}]>click</button></p> <template ms-widget=\"{is: 'ms-button-1'}\" ms-click=[{@msBtn1Click}]></template> <p><button ms-click=[{@updateMsBtn1TtileClick}] class=[{hl-btn hl-mgn-b-10}]>click-1</button></p> </div> </div> "
+       *         }
+       */
+      if (pathname == 'index') {
+          let conf = {
+            filename: pathname + '.html', //生成的html存放路径，相对于path
+            template: path.resolve(htmlPath, pathname + '.' + viewType), //html模板路径
+            minify: {
+              removeComments: true,
+              collapseWhitespace: true,
+              removeRedundantAttributes: true,
+              useShortDoctype: true,
+              removeEmptyAttributes: true,
+              removeStyleLinkTypeAttributes: true,
+              keepClosingSlash: true,
+              minifyJS: true,
+              minifyCSS: true,
+              minifyURLs: true
+            }
+          };
+          if (pathname in config.entry) { // 同HTML文件名的JS分离出来
+            conf.inject = 'body';
+            conf.chunks = ['Common', 'Main', pathname];
+          }
+          else {
+            conf.inject = 'body';
+            conf.chunks = ['Common', 'Main'];
+          }
+          conf.chunksSortMode = function (a, b) { // 按照配置排序
+            let index = {}, i = 1,
+                len           = conf.chunks.length;
+            for (; i <= len; i++) {
+              index[conf.chunks[len - i]] = i;
+            }
+            let aI = index[a.origins[0].name],
+                bI = index[b.origins[0].name];
+            return aI && bI ? bI - aI : -1;
+          };
+          config.plugins.push(new HtmlWebpackPlugin(conf));
       }
-      else {
-        conf.inject = 'body';
-        conf.chunks = ['Common', 'Main'];
-      }
-      conf.chunksSortMode = function (a, b) { // 按照配置排序
-        let index = {}, i = 1,
-            len           = conf.chunks.length;
-        for (; i <= len; i++) {
-          index[conf.chunks[len - i]] = i;
-        }
-        let aI = index[a.origins[0].name],
-            bI = index[b.origins[0].name];
-        return aI && bI ? bI - aI : -1;
-      };
-      config.plugins.push(new HtmlWebpackPlugin(conf));
     });
   });
 

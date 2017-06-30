@@ -17,6 +17,9 @@ if (process.env.NODE_TEST === 'production') {
 }
 
 module.exports = merge(config, {
+    externals: {
+        jquery: 'jQuery'
+    },
     plugins: [
         new WebpackMd5Hash(),
         new webpack.optimize.UglifyJsPlugin({
