@@ -76,31 +76,31 @@ avalon.component('ms-tabs-2', {
 });
 
 /**
- * @desc component header
+ * @desc ms-component-header
  */
-var msHeaderVM;
-avalon.component('ms-header', {
+var msComponentHeaderVM;
+avalon.component('ms-component-header', {
     template:   '<div class="hl-header hl-clearfix">\
                     <div class="logo hl-f-l" ms-on-mouseenter="@titleEnter(@titleMIS, $event)" ms-on-mouseleave="@titleLeave(@titleAvalon, $event)">{{@title}}</div>\
                     <div class="logout hl-f-r">\
-                        <a href="../#!/logout">退出</a>\
+                        <a href="../#!/logout">Component退出</a>\
                     </div>\
                 </div>',
     defaults: {
         onInit: (e) => {
-            msHeaderVM = e.vmodel;
+            msComponentVM = e.vmodel;
         },
         onReady: (e) => {
             console.log(this, e);
         },
-        title: 'Avalon2',
-        titleAvalon: 'Avalon2',
-        titleMIS: 'Avalon2-MIS',
+        title: 'ComponentAvalon2',
+        titleAvalon: 'ComponentAvalon2',
+        titleMIS: 'ComponentAvalon2-MIS',
         titleEnter: (name, e) => {
-            msHeaderVM.title = name;
+            msComponentVM.title = name;
         },
         titleLeave: (name, e) => {
-            msHeaderVM.title = name;
+            msComponentVM.title = name;
         }
    }
 });

@@ -15,19 +15,6 @@ $img-login-url: #{$img-url}#{'login/'}    !default;
         padding:            10px;
         @include            border-radius(10px);
         // background-color:   $white;
-
-
-        #pwd {
-            @include            display-flex(flex);
-            @include            flex-direction(row);
-            @include            flex-wrap(wrap);
-        }
-
-        #usr {
-            @extend             #pwd;
-            @include            flex-direction(column);
-            @include            justify-content(space-between);
-        }
     }
 }
 

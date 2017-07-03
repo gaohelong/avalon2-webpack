@@ -3,11 +3,10 @@
  */
 var msNavVM;
 avalon.component('ms-nav', {
-    template:   '<div class="hl-header hl-clearfix">\
-                    <div class="logo hl-f-l" ms-on-mouseenter="@titleEnter(@titleMIS, $event)" ms-on-mouseleave="@titleLeave(@titleAvalon, $event)">{{@title}}</div>\
-                    <div class="logout hl-f-r">\
-                        <a href="../#!/logout">退出咯</a>\
-                    </div>\
+    template:   '<div class="hl-nav hl-clearfix">\
+                    <a ms-for="(k, v) in @navList" ms-attr="{href: @v.url, target: @target}" ms-class="@curNavSel(@v.module,  @curNav)">\
+                        {{@k}}-{{@v.title}}-{{@v.url}}-{{@curNav}}\
+                    </a>\
                 </div>',
     defaults: {
         onInit: (e) => {
@@ -16,14 +15,32 @@ avalon.component('ms-nav', {
         onReady: (e) => {
             console.log(this, e);
         },
-        title: 'Nav',
-        titleAvalon: 'Nav',
-        titleMIS: 'Nav-MIS',
-        titleEnter: (name, e) => {
-            msNavVM.title = name;
+        target: '_self',
+        curNav: 'component', // 默认选中.
+        curNavSel: (module, curNav) => {
+            return module == curNav ? 'active' : '';
         },
-        titleLeave: (name, e) => {
-            msNavVM.title = name;
-        }
+        navList: [
+            {
+                title: '登录',
+                url: '../#!',
+                module: 'login'
+            },
+            {
+                title: '域名',
+                url: '../#!/domain',
+                module: 'domain'
+            },
+            {
+                title: '组件',
+                url: '../#!/component',
+                module: 'component'
+            },
+            {
+                title: 'echarts',
+                url: '../#!/echarts',
+                module: 'echarts'
+            }
+        ]
     }
 });

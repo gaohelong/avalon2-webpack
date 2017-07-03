@@ -1,9 +1,15 @@
 <!-- template -->
 <div ms-controller=[{domain}]>
-    <div ms-class=[{@domainCls}]>
-        <a ms-attr="{href: '../#!', target: '_self'}">登录</a>
-        <a ms-attr="{href: '../#!/domain', target: '_self'}">域名</a>
-        <a ms-attr="{href: '../#!/component', target: '_self'}">组件</a>
-        <div>domain{{@content}}</div>
+    <!-- header -->
+    <template ms-widget="{is: 'ms-header'}"></template>
+
+    <!-- nav -->
+    <ms-nav ms-widget=[{@curNav}]></ms-nav>
+
+    <!-- domain -->
+    <div class=[{hl-main}]>
+        <div ms-class=[{@domainCls}]>
+            <div>{{@content}}</div>
+        </div>
     </div>
 </div>
