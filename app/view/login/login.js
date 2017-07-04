@@ -6,6 +6,7 @@ let vm = avalon.define({
     pwd: '',
     loginMsg: '',
     loginMsgEle: false,
+    imgSrc: 'https://www.baidu.com/img/bd_logo1.png',
 
     // class.
     cls: {

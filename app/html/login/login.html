@@ -1,6 +1,7 @@
 <!-- template -->
 <div ms-controller=[{login}] class=[{hl-container}]>
     <div ms-class=[{@cls.loginWrap}]>
+        <div id=[{avatar}]></div>
         <div ms-class=[{@cls.row}] class=[{user}] ms-css=[{@style.mgnB10}]>
             <span>用户名</span>
             <input type=[{text}] name=[{user}] class=[{hl-input}] ms-attr="{placeholder: 'Username'}" ms-duplex=[{@user}] ms-on-keyup=[{@login($event) | enter}] />
@@ -15,5 +16,7 @@
         <div ms-class=[{@cls.row}] id=[{login-msg}] ms-visible=[{@loginMsgEle}]>
             {?@loginMsg?}
         </div>
+        <!-- img src 使用完整的url来进入 -->
+        <img ms-attr="{src: @imgSrc}" ms-css="{width: '100%', height: '100px', 'margin-top': '20px'}" />
     </div>
 </div>
