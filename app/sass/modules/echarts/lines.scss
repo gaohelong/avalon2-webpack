@@ -1,0 +1,25 @@
+@charset "utf-8";
+@import "../core";
+
+// path.
+$img-nav-url:   #{$img-url}#{'nav/'}      !default;
+$img-login-url: #{$img-url}#{'login/'}    !default;
+
+// style.
+.#{$prefix}-container {
+    .lines {
+        font-size:          26px;
+        color:              blue;
+        @include            display-flex(flex);
+        margin:             30px;
+        padding:            10px;
+        @include            border-radius(10px);
+        // background-color:   $white;
+    }
+}
+
+// animation.
+@include keyframes(close_animation) {
+    100%    { opacity: 1; }
+    0%      { opacity: 0; }
+}

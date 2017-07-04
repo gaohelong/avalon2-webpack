@@ -18,5 +18,6 @@ module.exports = ((entry) => {
         'lib',
         'sass',
         /* 'core-js', 'babel-polyfill' */
-    ]
+    ],
+    // 'echarts': ['echarts'], // 入口文件添加echars.
 });

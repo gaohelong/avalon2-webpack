@@ -1,5 +1,5 @@
 /**
- * @desc component-soleSlot
+ * @desc component-soleSlot, 将模版定界符从{{}}替换成其他的后buttonText会失效并{{##buttonText}}.
  */
 var msButtonVM; // 组件通信.
 avalon.component('ms-button', {
@@ -21,7 +21,7 @@ avalon.component('ms-button', {
 var msButton1VM; // 组件通信.
 avalon.component('ms-button-1', {
     template: '<button type="button" class="hl-btn hl-mgn-b-10">\
-                   <span>{{@title}}</span>\
+                   <span>{?@title?}</span>\
                </button>',
     defaults: {
         onInit: (e) => {
@@ -36,7 +36,7 @@ avalon.component('ms-button-1', {
  */
 avalon.component('ms-button-2', {
     template: '<button type="button" ms-on-click="@test" class="hl-btn hl-mgn-b-10">\
-                   <span>{{@title}}</span>\
+                   <span>{?@title?}</span>\
                </button>',
     defaults: {
         onInit: (e) => {
@@ -54,7 +54,7 @@ avalon.component('ms-button-2', {
  */
 avalon.component('ms-tabs', {
     template: '<div>\
-                   <p>它有{{@num}}个面板</p>\
+                   <p>它有{?@num?}个面板</p>\
                    <slot name="tab" />\
                </div>',
     defaults: {
@@ -67,7 +67,7 @@ avalon.component('ms-tabs', {
  */
 avalon.component('ms-tabs-2', {
     template: '<div>\
-                   <p>它有{{@num}}个面板</p>\
+                   <p>它有{?@num?}个面板</p>\
                    <slot name="panels" />\
                </div>',
     defaults: {
@@ -81,7 +81,7 @@ avalon.component('ms-tabs-2', {
 var msComponentHeaderVM;
 avalon.component('ms-component-header', {
     template:   '<div class="hl-header hl-clearfix">\
-                    <div class="logo hl-f-l" ms-on-mouseenter="@titleEnter(@titleMIS, $event)" ms-on-mouseleave="@titleLeave(@titleAvalon, $event)">{{@title}}</div>\
+                    <div class="logo hl-f-l" ms-on-mouseenter="@titleEnter(@titleMIS, $event)" ms-on-mouseleave="@titleLeave(@titleAvalon, $event)">{?@title?}</div>\
                     <div class="logout hl-f-r">\
                         <a href="../#!/logout">Component退出</a>\
                     </div>\

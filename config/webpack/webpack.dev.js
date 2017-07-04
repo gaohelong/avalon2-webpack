@@ -14,7 +14,8 @@ module.exports = merge(config, {
     hints: false // 性能提示[warning,error,false]
   },
   externals: {
-      jquery: 'jQuery'
+      jquery:  'jQuery',
+      echarts: 'echarts'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

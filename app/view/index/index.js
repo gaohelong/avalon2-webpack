@@ -2,6 +2,20 @@ import {loginConfig} from '../globalConfig/'; // 默认加载globalConfig文件�
 require('../../component/'); // 加载组件.
 
 /**
+ * @desc import view.
+ */
+import {echartsVM} from '../echarts/echarts'; // echarts.
+import {linesVM} from '../echarts/lines'; // lines.
+
+/**
+ * @desc avalon配置.
+ */
+avalon.config({
+    debug: false,
+    interpolate: ['{?','?}'] // 双花括号也默认是python一些著名模板的界定符，为了防止冲突，我们有更换界定符的需求。 这时我们可以通过这里来进行配置.
+})
+
+/**
  * @desc view model 
  */
 let vm = avalon.define({
@@ -44,6 +58,21 @@ var loginState = (callback) => {
 // router map
 var routerMap = {};
 
+// 报表
+avalon.router.add("/echarts", (param) => {
+    // 登录验证.
+    loginState(() => {
+        console.log('echarts');                                 // log.
+        require('../../sass/modules/echarts/echarts');          // sass.
+
+        let curHtml = require('../../html/echarts/echarts');    // html(路由匹配时在加载).
+        vm.content = htmlReplace(curHtml);
+
+        // require("../../view/echarts/echarts");               // js.
+        echartsVM.init(); // 初始化.
+    });
+});
+
 // 域名
 avalon.router.add("/domain", (param) => {
     // 登录验证.
@@ -51,7 +80,7 @@ avalon.router.add("/domain", (param) => {
         console.log('domain');                              // log.
         require('../../sass/modules/domain/domain');        // sass.
         require("../../view/domain/domain");                // js.
-        let curHtml = require('../../html/domain/domain');  // 路由匹配时在加载.
+        let curHtml = require('../../html/domain/domain');  // 路由匹配时在加载html.
         vm.content = htmlReplace(curHtml);
     });
 });
@@ -65,6 +94,21 @@ avalon.router.add("/component", (param) => {
         require("../../view/component/component");                  // js.
         let curHtml = require('../../html/component/component');    // html.
         vm.content = htmlReplace(curHtml);
+    });
+});
+
+// 线图
+avalon.router.add("/lines", (param) => {
+    // 登录验证.
+    loginState(() => {
+        console.log('lines');                                 // log.
+        require('../../sass/modules/echarts/lines');          // sass.
+
+        let curHtml = require('../../html/echarts/lines');    // html(路由匹配时在加载).
+        vm.content = htmlReplace(curHtml);
+
+        // require("../../view/echarts/lines");               // js.
+        linesVM.init(); // 初始化.
     });
 });
 

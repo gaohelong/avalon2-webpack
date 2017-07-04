@@ -5,7 +5,7 @@ var msNavVM;
 avalon.component('ms-nav', {
     template:   '<div class="hl-nav hl-clearfix">\
                     <a ms-for="(k, v) in @navList" ms-attr="{href: @v.url, target: @target}" ms-class="@curNavSel(@v.module,  @curNav)">\
-                        {{@k}}-{{@v.title}}-{{@v.url}}-{{@curNav}}\
+                        {?@k?} - {?@v.title?} - {?@curNav?}\
                     </a>\
                 </div>',
     defaults: {
@@ -13,7 +13,7 @@ avalon.component('ms-nav', {
             msNavVM = e.vmodel;
         },
         onReady: (e) => {
-            console.log(this, e);
+            // console.log(this, e);
         },
         target: '_self',
         curNav: 'component', // 默认选中.
@@ -21,15 +21,23 @@ avalon.component('ms-nav', {
             return module == curNav ? 'active' : '';
         },
         navList: [
+            // 模块.
             {
-                title: '登录',
-                url: '../#!',
-                module: 'login'
+                title: '报表',
+                url: '../#!/echarts',
+                module: 'echarts'
             },
             {
                 title: '域名',
                 url: '../#!/domain',
                 module: 'domain'
+            },
+
+            // 测试.
+            {
+                title: '线图',
+                url: '../#!/lines',
+                module: 'lines'
             },
             {
                 title: '组件',
@@ -37,10 +45,10 @@ avalon.component('ms-nav', {
                 module: 'component'
             },
             {
-                title: 'echarts',
-                url: '../#!/echarts',
-                module: 'echarts'
-            }
-        ]
+                title: '登录',
+                url: '../#!',
+                module: 'login'
+            },
+       ]
     }
 });

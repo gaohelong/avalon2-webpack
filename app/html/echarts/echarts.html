@@ -1,0 +1,22 @@
+<!-- template -->
+<div ms-controller=[{echarts}]>
+    <!-- header -->
+    <template ms-widget="{is: 'ms-header'}"></template>
+
+    <!-- nav -->
+    <ms-nav ms-widget=[{@curNav}]></ms-nav>
+
+    <!-- echarts -->
+    <div class=[{hl-main}]>
+        <div ms-class=[{@cls.echarts}]>
+            <div>{?@content?}</div>
+
+            <div>
+                <input ms-duplex=[{@content}] />
+            </div>
+
+            <!-- echarts -->
+            <div id=[{hl-report-map}] ms-css="{width: '100%', height: '500px'}"></div>
+        </div>
+    </div>
+</div>

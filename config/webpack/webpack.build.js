@@ -18,7 +18,8 @@ if (process.env.NODE_TEST === 'production') {
 
 module.exports = merge(config, {
     externals: {
-        jquery: 'jQuery'
+        jquery:  'jQuery',
+        echarts: 'echarts'
     },
     plugins: [
         new WebpackMd5Hash(),

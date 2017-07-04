@@ -79,7 +79,8 @@ module.exports = [
         query: require('./babel')
     }]),
 
+    // 热加载.
     new webpack.ProvidePlugin({
-
+        // echarts: 'echarts' // npm install echarts后如果热加载会打包到对应的模块中，好大呀.
     }),
 ];

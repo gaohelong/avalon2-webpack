@@ -167,10 +167,12 @@ module.exports = (option = { dev: process.env.NODE_ENV === 'development' }) => (
           };
           if (pathname in config.entry) { // 同HTML文件名的JS分离出来
             conf.inject = 'body';
+            // conf.chunks = ['Common', 'Main', 'echarts', pathname]; // 入口文件添加echarts
             conf.chunks = ['Common', 'Main', pathname];
           }
           else {
             conf.inject = 'body';
+            // conf.chunks = ['Common', 'Main', 'echarts']; // 入口文件添加echarts
             conf.chunks = ['Common', 'Main'];
           }
           conf.chunksSortMode = function (a, b) { // 按照配置排序

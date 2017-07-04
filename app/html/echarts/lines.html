@@ -1,0 +1,22 @@
+<!-- template -->
+<div ms-controller=[{lines}]>
+    <!-- header -->
+    <template ms-widget="{is: 'ms-header'}"></template>
+
+    <!-- nav -->
+    <ms-nav ms-widget=[{@curNav}]></ms-nav>
+
+    <!-- lines -->
+    <div class=[{hl-main}]>
+        <div ms-class=[{@cls.lines}]>
+            <div>{?@content?}</div>
+
+            <div>
+                <input ms-duplex=[{@content}] />
+            </div>
+
+            <!-- lines -->
+            <div id=[{hl-report-map}] ms-css="{width: '100%', height: '500px'}"></div>
+        </div>
+    </div>
+</div>

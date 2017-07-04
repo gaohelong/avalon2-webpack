@@ -13,7 +13,7 @@
             <button type=[{button}] class=[{hl-btn hl-cursor-pointer}] ms-on-click=[{@login($event)}]>登 录</button>
         </div>
         <div ms-class=[{@cls.row}] id=[{login-msg}] ms-visible=[{@loginMsgEle}]>
-            {{@loginMsg}}
+            {?@loginMsg?}
         </div>
     </div>
 </div>
