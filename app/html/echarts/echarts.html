@@ -8,7 +8,7 @@
 
     <!-- echarts -->
     <div class=[{hl-main}]>
-        <div ms-class=[{@cls.echarts}]>
+        <div class=[{echarts}]>
             <div>{?@content?}</div>
 
             <div>
@@ -16,7 +16,9 @@
             </div>
 
             <!-- echarts -->
-            <div id=[{hl-report-map}] ms-css="{width: '100%', height: '500px'}"></div>
+            <ms-average-age ms-widget=[{@msAverageAgeOption}]>
+                <div slot=[{avergae-age}] id=[{hl-report-map}] ms-css="{width: '100%', height: '500px'}"></div>
+            </ms-average-age>
         </div>
     </div>
 </div>

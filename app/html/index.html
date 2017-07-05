@@ -6,10 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
-    <body ms-controller="main">
+    <body ms-controller="main" class="ms-controller">
         <!-- router content -->
-        <div id="app" ms-html="@content"></div>
+        <div id="app" class="hl-container" ms-html="@content"></div>
         <div>{?avalon._customConfig.config.version?}</div>
+
         <script type="text/javascript" src="http://portal.sinobbd.com/static/bigdata/js/global/jquery.min.js?v0.1"></script>
         <script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.min.js?v0.1"></script>
         <script src="./dll/vendor.js?v0.1"></script>

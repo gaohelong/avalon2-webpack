@@ -59,6 +59,11 @@ input, textarea {
     color:  $black;
 }
 
+// 如何隐藏首屏加载页面时出现的花括号.
+.ms-controller {
+    visibility: hidden;
+}
+
 /* main */
 .#{$prefix}-main {
     position:               absolute;

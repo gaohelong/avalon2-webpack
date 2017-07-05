@@ -2,18 +2,18 @@ import {config, loginConfig} from '../globalConfig/'; // 默认加载globalConfi
 require('../../component/'); // 加载组件.
 
 /**
+ * @desc import view.
+ */
+import {echartsVM} from '../echarts/echarts'; // echarts.
+import {linesVM} from '../echarts/lines'; // lines.
+
+/**
  * @desc 将自定义配置注入到avalon object中.
  */
 avalon._customConfig = {
     config: config,
     loginConfig: loginConfig
 }
-
-/**
- * @desc import view.
- */
-import {echartsVM} from '../echarts/echarts'; // echarts.
-import {linesVM} from '../echarts/lines'; // lines.
 
 /**
  * @desc avalon配置.
@@ -30,7 +30,6 @@ let vm = avalon.define({
     $id         : 'main',
     content     : '',           // 默认为登录页. 注：属性(可在html中直接调用)
     array       : [1, 2],
-    sysVer      : avalon._customConfig.config.version, // 系统版本.
 });
 
 // 改变view model的值

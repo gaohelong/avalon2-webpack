@@ -8,13 +8,21 @@ $img-login-url: #{$img-url}#{'login/'}    !default;
 // style.
 .#{$prefix}-container {
     .echarts {
-        font-size:          26px;
-        color:              blue;
-        @include            display-flex(flex);
+        font-size:          20px;
+        color:              #fff;
         margin:             30px;
         padding:            10px;
         @include            border-radius(10px);
         // background-color:   $white;
+    }
+
+    .#{$prefix}-average-age {
+        .title {
+            margin-bottom:          16px;
+            color:                  #fff;
+            font-size:              18px;
+            text-align:             center;
+        }
     }
 }
 

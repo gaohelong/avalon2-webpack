@@ -8,9 +8,8 @@ $img-login-url: #{$img-url}#{'login/'}    !default;
 // style.
 .#{$prefix}-container {
     .lines {
-        font-size:          26px;
-        color:              blue;
-        @include            display-flex(flex);
+        font-size:          20px;
+        color:              #fff;
         margin:             30px;
         padding:            10px;
         @include            border-radius(10px);

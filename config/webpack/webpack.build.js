@@ -25,8 +25,9 @@ module.exports = merge(config, {
         new WebpackMd5Hash(),
         new webpack.optimize.UglifyJsPlugin({
             compress: {
-                //supresses warnings, usually from module minification
-                warnings: false
+                warnings: false,        // supresses warnings, usually from module minification
+                drop_debugger: true,    //
+                drop_console: true,     // 移除console.log
             }
         })
     ]

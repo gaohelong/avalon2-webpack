@@ -53,7 +53,7 @@ module.exports = (dev) => {
                     query: {
                         limit: 1,
                         publicPath: '/',
-                        name: 'assets/[name]-[hash:8].[ext]'
+                        name: 'assets/fonts/[name]-[hash:8].[ext]'
                     }
                 }
                 ]
