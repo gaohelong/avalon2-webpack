@@ -29,7 +29,7 @@ module.exports = (dev) => {
                     query: {
                         limit: 2000,
                         publicPath: '/',
-                        name: 'assets/[name]-[hash:8].[ext]'
+                        name: 'assets/images/[name]-[hash:8].[ext]'
                     }
                 },
                 {

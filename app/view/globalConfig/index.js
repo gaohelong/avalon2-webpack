@@ -6,4 +6,11 @@ var loginConfig = {
     url: 'http://hl.avalon2.com/php/test.php',
 };
 
-export {loginConfig};
+/**
+ * @desc 全局配置.
+ */
+var config = {
+    version: 'v0.1'
+};
+
+export {config, loginConfig};

@@ -9,9 +9,9 @@
     <body ms-controller="main">
         <!-- router content -->
         <div id="app" ms-html="@content"></div>
-
-        <script type="text/javascript" src="http://portal.sinobbd.com/static/bigdata/js/global/jquery.min.js"></script>
-        <script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.min.js"></script>
-        <script src="./dll/vendor.js"></script>
+        <div>{?avalon._customConfig.config.version?}</div>
+        <script type="text/javascript" src="http://portal.sinobbd.com/static/bigdata/js/global/jquery.min.js?v0.1"></script>
+        <script type="text/javascript" src="http://echarts.baidu.com/dist/echarts.min.js?v0.1"></script>
+        <script src="./dll/vendor.js?v0.1"></script>
     </body>
 </html>

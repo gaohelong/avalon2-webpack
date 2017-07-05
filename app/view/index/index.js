@@ -1,5 +1,13 @@
-import {loginConfig} from '../globalConfig/'; // 默认加载globalConfig文件夹下的index.js文件.
+import {config, loginConfig} from '../globalConfig/'; // 默认加载globalConfig文件夹下的index.js文件.
 require('../../component/'); // 加载组件.
+
+/**
+ * @desc 将自定义配置注入到avalon object中.
+ */
+avalon._customConfig = {
+    config: config,
+    loginConfig: loginConfig
+}
 
 /**
  * @desc import view.
@@ -22,6 +30,7 @@ let vm = avalon.define({
     $id         : 'main',
     content     : '',           // 默认为登录页. 注：属性(可在html中直接调用)
     array       : [1, 2],
+    sysVer      : avalon._customConfig.config.version, // 系统版本.
 });
 
 // 改变view model的值
@@ -35,7 +44,7 @@ setTimeout(() => {
 var loginState = (callback) => {
     $.ajax({
         method: 'POST',
-        url: loginConfig.url,
+        url: avalon._customConfig.loginConfig.url,
         data: {
             user: 'helong',
             pwd:  '123456'

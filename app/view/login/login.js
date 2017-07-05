@@ -1,12 +1,10 @@
-import {loginConfig} from '../globalConfig/'; // 默认加载globalConfig文件夹下的index.js文件.
-
 let vm = avalon.define({
     $id: 'login',
     user: '',
     pwd: '',
     loginMsg: '',
     loginMsgEle: false,
-    imgSrc: 'https://www.baidu.com/img/bd_logo1.png',
+    imgSrc: 'https://www.baidu.com/img/bd_logo1.png?' + avalon._customConfig.config.version,
 
     // class.
     cls: {
@@ -25,7 +23,7 @@ let vm = avalon.define({
     login: (e) => {
         $.ajax({
             method: 'POST',
-            url: loginConfig.url,
+            url: avalon._customConfig.loginConfig.url,
             data: {
                 user: vm.user,
                 pwd: vm.pwd
@@ -40,7 +38,7 @@ let vm = avalon.define({
                     vm.pwd = '';
                     vm.loginMsg = '';
                     vm.loginMsgEle = false;
-                    window.location = loginConfig.defUrl;
+                    window.location = avalon._customConfig.loginConfig.defUrl;
                 }
             }
         });
