@@ -34,7 +34,7 @@ let vm = avalon.define({
 // onReady回调, 只会调用一次!
 /*vm.$watch('onReady', () => {
     //当echarts这个区域第一次扫描后会被执行
-    vm.reportMap();
+    vm.init();
 });*/
 
 // 当domReady发生时,框架会自动调用的方法,会传入avalon作为参数,该方法与jQuery.ready相仿.

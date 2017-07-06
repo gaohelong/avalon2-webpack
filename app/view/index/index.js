@@ -4,8 +4,9 @@ require('../../component/'); // 加载组件.
 /**
  * @desc import view.
  */
-import {echartsVM} from '../echarts/echarts'; // echarts.
-import {linesVM} from '../echarts/lines'; // lines.
+import {echartsVM} from '../echarts/echarts';   // echarts.
+import {linesVM}   from '../echarts/lines';     // lines.
+import {piesVM}    from '../echarts/pies';      // pies.
 
 /**
  * @desc 将自定义配置注入到avalon object中.
@@ -71,6 +72,7 @@ avalon.router.add("/echarts", (param) => {
     // 登录验证.
     loginState(() => {
         console.log('echarts');                                 // log.
+        titleChange('报表');                                    // title.
         require('../../sass/modules/echarts/echarts');          // sass.
 
         let curHtml = require('../../html/echarts/echarts');    // html(路由匹配时在加载).
@@ -86,6 +88,7 @@ avalon.router.add("/domain", (param) => {
     // 登录验证.
     loginState(() => {
         console.log('domain');                              // log.
+        titleChange('域名');                                // title.
         require('../../sass/modules/domain/domain');        // sass.
         require("../../view/domain/domain");                // js.
         let curHtml = require('../../html/domain/domain');  // 路由匹配时在加载html.
@@ -98,6 +101,7 @@ avalon.router.add("/component", (param) => {
     // 登录验证.
     loginState(() => {
         console.log('component');                                   // log.
+        titleChange('组件');                                        // title.
         require('../../sass/modules/component/component');          // sass.
         require("../../view/component/component");                  // js.
         let curHtml = require('../../html/component/component');    // html.
@@ -110,6 +114,7 @@ avalon.router.add("/lines", (param) => {
     // 登录验证.
     loginState(() => {
         console.log('lines');                                 // log.
+        titleChange('线图');                                  // title.
         require('../../sass/modules/echarts/lines');          // sass.
 
         let curHtml = require('../../html/echarts/lines');    // html(路由匹配时在加载).
@@ -117,6 +122,22 @@ avalon.router.add("/lines", (param) => {
 
         // require("../../view/echarts/lines");               // js.
         linesVM.init(); // 初始化.
+    });
+});
+
+// 饼图
+avalon.router.add("/pies", (param) => {
+    // 登录验证.
+    loginState(() => {
+        console.log('pies');                                 // log.
+        titleChange('饼图');                                 // title.
+        require('../../sass/modules/echarts/pies');          // sass.
+
+        let curHtml = require('../../html/echarts/pies');    // html(路由匹配时在加载).
+        vm.content = htmlReplace(curHtml);
+
+        // require("../../view/echarts/pies");               // js.
+        piesVM.init(); // 初始化.
     });
 });
 
@@ -129,6 +150,7 @@ avalon.router.add("/setting/:ddd/:eee", (param) => {    //:ddd为参数
 //登录 
 avalon.router.add("\/*\ig", (param) => {
     console.log('login');                               // log.
+    titleChange('登录');                                // title.
     require("../../sass/modules/login/login");          // sass.
     require("../../view/login/login");                  // js.
     let curHtml = require("../../html/login/login");    // html.
@@ -142,6 +164,13 @@ avalon.router.add("\/*\ig", (param) => {
     //     vm.content = htmlReplace(_html);
     // }, 'login');
 });
+
+/**
+ * @desc document title change
+ */
+let titleChange = (title) => {
+    document.title = title;
+};
 
 /**
  * @desc 处理avalon-bug.

@@ -40,6 +40,11 @@ avalon.component('ms-nav', {
                 module: 'lines'
             },
             {
+                title: '饼图',
+                url: '../#!/pies',
+                module: 'pies'
+            },
+            {
                 title: '组件',
                 url: '../#!/component',
                 module: 'component'

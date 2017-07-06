@@ -1,0 +1,29 @@
+<!-- template -->
+<div ms-controller=[{pies}]>
+    <!-- header -->
+    <template ms-widget="{is: 'ms-header'}"></template>
+
+    <!-- nav -->
+    <ms-nav ms-widget=[{@curNav}]></ms-nav>
+
+    <!-- pies -->
+    <div class=[{hl-main}]>
+        <div class=[{pies}]>
+            <div>{?@content?}</div>
+
+            <div>
+                <input ms-duplex=[{@content}] id=[{title}] />
+            </div>
+
+            <!-- pies -->
+            <ms-money ms-widget=[{@msMoneyConfig}]>
+                <div slot=[{report-money-slot}] id=[{hl-report-money}] ms-css="{width: '100%', height: '500px'}"></div>
+            </ms-money>
+
+            <!-- pies -->
+            <ms-money ms-widget=[{@msMoney1Config}]>
+                <div slot=[{report-money-slot}] id=[{hl-report-money1}] ms-css="{width: '100%', height: '500px'}"></div>
+            </ms-money>
+       </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+@charset "utf-8";
+@import "../core";
+
+// path.
+$img-nav-url:   #{$img-url}#{'nav/'}      !default;
+$img-login-url: #{$img-url}#{'login/'}    !default;
+
+// style.
+.#{$prefix}-container {
+    .pies {
+        font-size:          20px;
+        color:              #fff;
+        margin:             30px;
+        padding:            10px;
+        @include            border-radius(10px);
+        // background-color:   $white;
+    }
+
+    .#{$prefix}-report-money {
+        .title {
+            margin-bottom:          16px;
+            color:                  #fff;
+            font-size:              18px;
+            text-align:             center;
+        }
+    }
+}
+
+// animation.
+@include keyframes(close_animation) {
+    100%    { opacity: 1; }
+    0%      { opacity: 0; }
+}
